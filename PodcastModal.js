@@ -147,3 +147,10 @@ class PodcastModal extends HTMLElement {
         </div>
       </div>
     `;
+        this.shadowRoot.getElementById('close').onclick = () => {
+      this.remove();
+    };
+  }
+}
+
+customElements.define('podcast-modal', PodcastModal);
