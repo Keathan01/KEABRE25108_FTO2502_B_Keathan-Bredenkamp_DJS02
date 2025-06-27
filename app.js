@@ -21,7 +21,7 @@ const enriched = podcasts.map(p => ({
   ...p,
   genreTitles: getGenreTitles(p.genres).join(', '),
   totalEpisodes: getTotalEpisodes(p.id),
-  seasonDetails: getSeasonDetails(p.id) // ✅ Add this
+  seasonDetails: getSeasonDetails(p.id) // 
 }));
 
 // Render all podcast previews in the container

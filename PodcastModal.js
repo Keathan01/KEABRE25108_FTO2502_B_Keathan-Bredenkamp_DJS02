@@ -34,6 +34,7 @@ class PodcastModal extends HTMLElement {
 
     // Generate HTML list for each season
     const seasonHTML = seasonDetails.map(season =>
+  
       `<li><strong>${season.title}</strong> — ${season.episodes} episode(s)</li>`
     ).join('');
 
@@ -92,6 +93,7 @@ class PodcastModal extends HTMLElement {
           display: flex;
           gap: 1.5rem;
           align-items: flex-start;
+
         }
 
         .cover {
@@ -121,6 +123,12 @@ class PodcastModal extends HTMLElement {
           font-size: 0.9rem;
           color: #444;
         }
+          .Gnr{
+          display:inline-block;
+          padding:0.2rem;
+          border-radius:4px;
+          background-color:#f0f0f0;
+          }
 
         @media (max-width: 600px) {
           .content {
@@ -138,10 +146,10 @@ class PodcastModal extends HTMLElement {
           </div>
           <div class="details">
             <h2>${title}</h2>
-            <p><strong>Description:</strong> ${description}</p>
-            <p><strong>Genres:</strong> ${genres}</p>
+            <p><strong>Description:<br></strong> ${description}</p>
+            <p><strong>Genres:</strong> <span class="Gnr">${genres}</span></p>
             <p><strong>Last updated:</strong> ${formattedDate}</p>
-
+            <h3>Seasons</h3>
             <ul class="season-list">
               ${seasonHTML}
             </ul>
