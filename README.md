@@ -1,5 +1,98 @@
 # DJS02 – Web Component: Podcast Preview
 
+# 🎧 Podcast Preview Web Component
+
+A reusable, stateless Web Component for displaying podcast previews.  
+Click a card to open a modal showing podcast details, genres, and season breakdown.
+
+---
+
+## 📦 Features
+
+- Built using native Web Components (no frameworks)
+- Stateless: accepts all data via attributes or properties
+- Encapsulated with Shadow DOM
+- Triggers custom events to communicate with the main app
+- Responsive design with accessible layout
+- Clean, modular JavaScript and HTML structure
+
+---
+
+## 🚀 Getting Started
+
+### 📁 File Structure
+- app.js
+- data.js
+- index.html
+- PodcastModal.js
+- PodcastPreview.js
+
+## 🔧 How to Use and Register the Component
+
+Web Components register themselves when their defining script is loaded.  
+* Example
+- customElements.define('podcast-preview', PodcastPreview);
+- customElements.define('podcast-modal', PodcastModal);
+
+
+## 📤 Instructions for Passing Data
+There are two ways to pass data into the components:
+
+1. 🔠 Using Attributes (for <podcast-preview>)
+You pass data directly into the component via standard HTML attributes.
+
+Example:
+html
+Copy
+Edit
+<podcast-preview
+  title="Something Was Wrong"
+  cover="https://content.production.cdn.art19.com/images/cc/e5/0a/08/cce50a08-d77d-490e-8c68-17725541b0ca/9dcebd4019d57b9551799479fa226e2a79026be5e2743c7aef19eac53532a29d66954da6e8dbdda8219b059a59c0abe6dba6049892b10dfb2f25ed90d6fe8d9a.jpeg"
+  genres="True Crime, Personal Growth"
+  seasons="14"
+  episodes="98"
+  updated="2024-06-10T10:00:00Z"
+  description="A true crime podcast about abuse and recovery."
+></podcast-preview>
+
+
+2. 📦 Using a Property (for <podcast-modal>)
+
+
+Example:
+js
+Copy
+Edit
+const modal = document.createElement('podcast-modal');
+modal.data = {
+  title: "Something Was Wrong",
+  cover: "https://example.com/cover.jpg",
+  genres: "True Crime, Personal Growth",
+  seasons: "14",
+  episodes: "98",
+  updated: "2024-06-10T10:00:00Z",
+  description: "A true crime podcast...",
+  seasonDetails: [ { title: "Season 1", episodes: 10 }, ... ]
+};
+document.body.appendChild(modal);
+
+
+
+
+### 📥 How to Listen
+- js copy
+
+* document.addEventListener('podcast-selected', (event) => {
+  const podcastData = event.detail;
+  console.log('Podcast selected:', podcastData);
+
+  // Example: show modal with full data
+  const modal = document.createElement('podcast-modal');
+  modal.data = podcastData;
+  document.body.appendChild(modal);
+});
+
+
 ## Overview
 
 In this project, you will build a reusable and encapsulated **custom HTML element** that displays a podcast preview. The component must follow the **Web Component standard**, using `customElements.define()` and should work independently from the main application logic. This component will enhance modularity, promote reuse, and reduce code duplication across the app.
