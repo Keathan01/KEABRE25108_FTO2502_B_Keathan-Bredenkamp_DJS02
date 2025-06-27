@@ -75,6 +75,7 @@ class PodcastModal extends HTMLElement {
           width:50%;
           padding:0.5rem;
           list-style:none;
+          cursor:pointer;
           }
 
         .close {
