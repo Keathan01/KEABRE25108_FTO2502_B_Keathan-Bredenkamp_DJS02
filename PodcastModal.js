@@ -65,18 +65,19 @@ class PodcastModal extends HTMLElement {
           gap: 1rem;
           height:70vh;
           overflow-y:auto;
-        }
+  }
           li{
           background: white;
           border:1px solid #ddd;
           border-radius:8px;
           row-gap:o.5rem;
-          diplay:flex;
           margin-top:5px;
-          width:50%;
+          width:100%;
           padding:0.5rem;
           list-style:none;
           cursor:pointer;
+          position:relative;
+          right:250px
           }
 
         .close {
@@ -93,7 +94,6 @@ class PodcastModal extends HTMLElement {
           display: flex;
           gap: 1.5rem;
           align-items: flex-start;
-
         }
 
         .cover {
@@ -122,6 +122,7 @@ class PodcastModal extends HTMLElement {
           list-style: disc;
           font-size: 0.9rem;
           color: #444;
+       
         }
           .Gnr{
           display:inline-block;
@@ -129,11 +130,16 @@ class PodcastModal extends HTMLElement {
           border-radius:4px;
           background-color:#f0f0f0;
           }
+       
 
         @media (max-width: 600px) {
           .content {
             flex-direction: column;
           }
+            li{
+            postion:relative;
+            right:0px;
+            }
         }
       </style>
 
