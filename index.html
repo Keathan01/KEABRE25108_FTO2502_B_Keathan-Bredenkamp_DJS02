@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Podcast </title>
+  <style>
+    body {
+      font-family: sans-serif;
+     background: linear-gradient(135deg, #3b3194, #5147c5, #555594, #2aa7fad0, #7f2ad4);
+  background-size: 200% 200%;
+  animation: galaxyShift 15s ease infinite;
+      margin: 0;
+      padding: 2rem;
+    }
+    @keyframes galaxyShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+    #podcast-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎙️ Podcast App</h1>
+  <div id="podcast-container"></div>
+
+  <script type="module" defer src="./PodcastPreview.js"></script>
+  <script type="module"  defer src="./PodcastModal.js"></script>
+  <script type="module">
+    import { renderPodcasts } from './app.js';
+    renderPodcasts();
+  </script>
+</body>
+</html>
