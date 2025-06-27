@@ -1,22 +1,26 @@
 // PodcastPreview.js
+// A reusable Web Component that displays a podcast preview card
 
 class PodcastPreview extends HTMLElement {
   constructor() {
     super();
+      // Attach Shadow DOM to encapsulate styles and markup
     this.attachShadow({ mode: 'open' });
   }
-
+// Observe relevant attributes for reactivity
   static get observedAttributes() {
     return ['id', 'cover', 'title', 'genres', 'seasons', 'episodes', 'updated', 'description'];
   }
 
+  // Re-render the component whenever an attribute changes
   attributeChangedCallback() {
     this.render();
   }
-
+ // Setup click listener to emit custom event when selected
   connectedCallback() {
     this.render();
     this.shadowRoot.addEventListener('click', () => {
+        // Emit podcast-selected event with all relevant podcast data
       this.dispatchEvent(new CustomEvent('podcast-selected', {
         detail: {
           id: this.getAttribute('id'),
@@ -34,12 +38,14 @@ class PodcastPreview extends HTMLElement {
     });
   }
 
+  // Format ISO date to human-readable string
   formatDate(iso) {
     return new Date(iso).toLocaleDateString(undefined, {
       year: 'numeric', month: 'short', day: 'numeric'
     });
   }
 
+  // Render the podcast preview card
   render() {
     const cover = this.getAttribute('cover') || '';
     const title = this.getAttribute('title') || '';

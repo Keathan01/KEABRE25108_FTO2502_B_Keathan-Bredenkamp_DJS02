@@ -1,12 +1,13 @@
 // PodcastModal.js
-
+// A Web Component that displays detailed podcast info in a modal overlay
 class PodcastModal extends HTMLElement {
   constructor() {
     super();
+        // Shadow DOM encapsulation
     this.attachShadow({ mode: 'open' });
     this._data = null;
   }
-
+ // Set podcast data from parent
   set data(podcast) {
     this._data = podcast;
     this.render();
@@ -15,26 +16,30 @@ class PodcastModal extends HTMLElement {
   connectedCallback() {
     this.render();
   }
-
+ // Generate modal content dynamically based on podcast data
   render() {
     if (!this._data) {
       this.shadowRoot.innerHTML = '';
       return;
     }
 
+    // Destructure data properties
     const {
       title, cover, genres, seasons, episodes, updated, description, seasonDetails = []
     } = this._data;
-
+// Format last updated date
     const formattedDate = new Date(updated).toLocaleDateString(undefined, {
       year: 'numeric', month: 'short', day: 'numeric'
     });
 
+    // Generate HTML list for each season
     const seasonHTML = seasonDetails.map(season =>
       `<li><strong>${season.title}</strong> — ${season.episodes} episode(s)</li>`
     ).join('');
 
+    // Inject the modal HTML template
     this.shadowRoot.innerHTML = `
+      
       <style>
         :host {
           position: fixed;
@@ -147,6 +152,7 @@ class PodcastModal extends HTMLElement {
         </div>
       </div>
     `;
+     // Close modal on button click
         this.shadowRoot.getElementById('close').onclick = () => {
       this.remove();
     };
